@@ -6,7 +6,7 @@ import (
 
 	"github.com/xuri/excelize/v2"
 
-	"github.com/geoirb/excel-templater"
+	excel "github.com/xr-z/xlts"
 )
 
 var (

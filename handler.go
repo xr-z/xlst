@@ -1,4 +1,4 @@
-package excel
+package xlst
 
 import (
 	"encoding/base64"
@@ -79,7 +79,7 @@ func (t *templater) qrCodeHandler(file *excelize.File, sheet string, rowIdx, col
 	}
 	axis, _ := excelize.CoordinatesToCellName(*colIdx+1, *rowIdx+1)
 	file.SetCellValue(sheet, axis, "")
-	if err = file.AddPictureFromBytes(sheet, axis, "", "", ".png", data); err != nil {
+	if err = file.AddPictureFromBytes(sheet, axis, &excelize.Picture{Extension: ".png", File: data}); err != nil {
 		err = fmt.Errorf("qrCodeHandler: insert qrcode to file %s", err)
 	}
 	return
@@ -118,7 +118,7 @@ func (s *templater) imageHandler(file *excelize.File, sheet string, rowIdx, colI
 
 	axis, _ := excelize.CoordinatesToCellName(*colIdx+1, *rowIdx+1)
 	file.SetCellValue(sheet, axis, "")
-	if err := file.AddPictureFromBytes(sheet, axis, "", "", ".png", imageBytes); err != nil {
+	if err := file.AddPictureFromBytes(sheet, axis, &excelize.Picture{Extension: ".png", File: imageBytes}); err != nil {
 		return fmt.Errorf("imageHandler: insert image to file %s", err)
 	}
 	return nil

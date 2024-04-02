@@ -1,4 +1,4 @@
-package excel
+package xlst
 
 import (
 	qr "github.com/skip2/go-qrcode"
